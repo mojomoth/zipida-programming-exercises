@@ -1,5 +1,9 @@
 `package.json` 에 대해 작성하세요.
 
+[1. Description](# 1. Description)
+[2. pakage.json 주요 속성](# 2. pakage.json 주요 속성)
+[3. 주요 명령어](# 3. 주요 명령어)
+
 # 1. Description
 `package.json`은 `npm`을 통해 설치한 패키지의 버전 및 의존성(dependencies)을 관리하는 문서입니다. package.json을 작성할 때에는 JavaScript의 객체 리터럴이 아니라 올바를 JSON 형식이어야 합니다.
 
