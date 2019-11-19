@@ -1,1 +1,91 @@
 `package.json` 에 대해 작성하세요.
+
+# 1. Description
+`package.json`은 `npm`을 통해 설치한 패키지의 버전 및 의존성(dependencies)을 관리하는 문서입니다. package.json을 작성할 때에는 JavaScript의 객체 리터럴이 아니라 올바를 JSON 형식이어야 합니다.
+
+이 문서의 많은 부분은 `npm-config`에 쓰여있는 설정에 영향을 받습니다.
+
+
+> **npm : Node Package Manager**
+> 대부분의 자바스크립트 프로그램은 패키지라는 이름으로 npm에 등록되어 있으므로, 특정 기능의 패키지가 필요하면 npm에서 찾아 설치하면 됩니다. npm에는 60만 개 이상의 패키지가 등록되어있습니다.
+
+
+
+# 2. pakage.json 주요 속성
+
+## 2.1 name
+`package.json` 에서 가장 중요한 항목은 `name`과 `version` 입니다. `name`과 `version`을 통해 각 패키지의 고유성을 판별하게 됩니다. 이름을 지정하기 위해서는 아래의 규칙을 준수해야 합니다.
+
+#### 몇 가지 규칙
+- 이름은 **214**자 이내여야 합니다.
+- 반드시 **소문자**로 작성해야 합니다.
+- 점(.)이나 밑줄(_)로 시작할 수 없습니다.
+- URL이나 Command Line의 인수이며 폴더명으로 사용됩니다.
+
+## 2.2 version
+노트 패키지의 버전은 [SemVer](https://docs.npmjs.com/misc/semver)의 규칙을 엄격히 준수해야합니다. `[메이저].[마이너].[패치]` 세 자리로 이루어져 있습니다. 메이저는 업데이트(이전 버전과 호환 불가능), 마이너는 소규모 업데이트(이전 버전과 호환 가능), 패치는 버그 수정 시에 버전을 올립니다. 패키지의 내용을 변경하려면 version을 변경해야만 합니다.
+
+## 2.3 description
+사용자가 `npm search`에 검색하였을 때 표시되는 설명입니다.
+
+## 2.4 keywords
+npm search 사용 시 도움이 됩니다. 패키지의 키워드를 배열로 지정할 수 있습니다.
+
+## 2.5 homepage
+프로젝트 홈페이지로 연결되는 **URL**을 지정합니다.
+
+## 2.6 bugs
+패키지에 문제가 있을 때 사용자에게 도움을 주기 위해 사용합니다. 이슈 트래킹을 볼 수 있는 URL 및 이메일 주소를 지정할 수 있습니다.
+
+## 2.7 license
+패키지 사용을 허용하는 방법과 제한 사항을 알 수 있도록 라이센스를 지정할 수 있습니다.
+
+## 2.8 people fields : author, contributor
+`author`는 한 사람만을 지정하고, `contributor`는 여러 사람을 배열로 지정할 수 있습니다. 
+
+## 2.9 files
+패키지가 의존성으로 설치될 때 같이 포함될 파일들의 배열입니다.
+`.npmignore`라는 파일을 패키지의 루트 혹은 하위 폴더에 생성하여 대상에서 제외할 수 있습니다.
+
+## 2.10 main
+프로그램의 기본 시작점(entry point)이 되는 모듈의 ID입니다.
+
+## 2.11 repository
+소스 코드가 관리되는 저장소의 위치를 지정합니다.
+
+## 2.12 script
+패키지 생명 주기 중 다양한 타이밍에서 실행되는 스크립트 명령을 포함하고 있는 사전입니다. 여러가지 npm 명령어를 알려줍니다. **npm start**를 사용하면 node server/index.js라는 명령어가 실행됩니다. 그밖에 publish, uninstall, start, restart, test, version 등이 있습니다. 뿐만 아니라 임의로 script를 만들수 있습니다.
+
+## 2.13 dependencies
+패키지의 배포 시 포함될 의존성 모듈을 지정합니다.
+
+## 2.14 devDependencies
+패키지의 테스트 관련 모듈이나 트랜스 파일러 관련 모듈 등 개발 시 사용될 의존성 모듈을 지정합니다. 배포 시 포함되지 않습니다.
+
+## 2.15 peerDependencies
+패키지의 호환성 모듈을 지정합니다.
+
+## 2.16 bundledDependencies
+패키지를 게시할 때 번들로 묶을 패키지 이름을 배열로 지정합니다.
+
+## 2.17 engines
+패키지가 작동하는 node 버전을 지정할 수 있습니다.
+
+## 2.18 private
+개인 저장소의 우연한 발행을 방지하기 위해 npm에서 패키지의 공개 여부를 지정합니다.
+
+
+# 3. 주요 명령어
+```javascript
+npm init
+```
+package.json 생성 - 프로젝트 의존 모듈 관리(사용 모듈 네임, 버젼), 프로젝트 정보
+
+```javascript
+- npm install 모듈명 --save : 
+```
+모듈 설치 시 --save 옵션을 주면 package.json에 자동 등록됨
+
+
+#### [package.json 공식 문서](https://docs.npmjs.com/files/package.json)
+
